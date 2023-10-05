@@ -440,7 +440,7 @@ char *yytext;
 /*** Definition Section has one variable
 which can be accessed inside yylex()
 and main() ***/
-#line 5 "lex.l"
+#line 6 "lex.l"
 int count = 0;
 #line 446 "lex.yy.c"
 /*** Rule Section has three rules, first rule
@@ -664,7 +664,7 @@ YY_DECL
 		}
 
 	{
-#line 12 "lex.l"
+#line 16 "lex.l"
 
 #line 670 "lex.yy.c"
 
@@ -725,24 +725,24 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 13 "lex.l"
+#line 17 "lex.l"
 {printf("%s capital letter\n", yytext);
        count++;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 15 "lex.l"
+#line 19 "lex.l"
 {printf("%s not a capital letter\n", yytext);}
 	YY_BREAK
 case 3:
 /* rule 3 can match eol */
 YY_RULE_SETUP
-#line 16 "lex.l"
+#line 20 "lex.l"
 {return 0;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 17 "lex.l"
+#line 21 "lex.l"
 ECHO;
 	YY_BREAK
 #line 749 "lex.yy.c"
@@ -1750,11 +1750,14 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 17 "lex.l"
+#line 21 "lex.l"
 
- 
+
+
+
 /*** Code Section prints the number of
 capital letter present in the given input***/
+
 int yywrap(){}
 int main(){
  
@@ -1768,12 +1771,12 @@ int main(){
  
 // Uncomment the lines below
 // to take input from file
-// FILE *fp;
-// char filename[50];
-// printf("Enter the filename: \n");
-// scanf("%s",filename);
-// fp = fopen(filename,"r");
-// yyin = fp;
+FILE *fp;
+char filename[50];
+printf("Enter the filename: \n");
+scanf("%s",filename);
+fp = fopen(filename,"r");
+yyin = fp;
  
 yylex();
 printf("\nNumber of Capital letters "

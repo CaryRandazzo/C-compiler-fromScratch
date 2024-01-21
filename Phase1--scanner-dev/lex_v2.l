@@ -1,28 +1,26 @@
-
-
-
 /* DEFINITION SECTION -- can be accessed inside yylex() and main() */
-
-/*  IMPORTANT NOTE!:  UNTESTED, make updates to the code then test */
-/* Try unit dest based design: Create the unit tests and test cases for the scanner first then run the output of this scanner givene the test input against it. */
 
 
 %{
-int count = 0;
-//char capitals[50]; // TODO: This will require dynamic allocation of the capitals array to work properly ,this is a static declaration temporarily
-//char lowercase[50]; // TODO: ditto as the capitals
-%}
+char alpha[50]; 
 
+%}
 
 
 /* RULE SECTION */
 
 
 %%
-[A-Z] {printf("%s capital letter\n", yytext);
-       count++;} // TODO: Add the append/update to the capitals character array here for each found capital letter
-.     {printf("%s not a capital letter\n", yytext);} // TODO: Add the append/update to the lowercase character array here for each found lowercase letter
+[A-Z] {} // Do nothing.
+
+[a-z] {printf("%s is alpha\n", yytext);} // return alpha character
+
+[0-9] {printf("%s is numeric\n", yytext);} // return numeric character
+
+.     {printf("%s not a capital letter\n", yytext);} // Other
+
 \n    {return 0;}
+
 %%
 
 
@@ -54,8 +52,7 @@ yyin = fp;
 
 // Call the main flex function and render the desired output. 
 yylex();
-printf("\nNumber of Capital letters "
-      "in the given input - %d\n", count);
+
  
 return 0;
 }
